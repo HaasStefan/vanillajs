@@ -1,8 +1,13 @@
 import { createComponent, useEventListener } from "../framework/Component";
-import { createRxState, type RxState } from "../framework/State";
-import { initialState, type CounterState } from "./CounterModel";
+import {
+  createCounterState
+} from "./counter.state";
 
-export function Counter(state: RxState<CounterState>, shadowRoot: ShadowRoot) {
+
+createComponent(
+  "app-root", 
+  createCounterState, 
+  (state, shadowRoot) => {
   const increment = useEventListener("increment", shadowRoot, () => {
     console.log(state.state.count);
     state.state.count++;
@@ -18,12 +23,4 @@ export function Counter(state: RxState<CounterState>, shadowRoot: ShadowRoot) {
     <span id="count">${state.state.count}</span>
     <button id="increment" onclick="${increment()}">+</button>
   `;
-}
-
-createComponent("app-root", createRxState(initialState), Counter);
-
-
-// TODO:
-// useEffect() with tracking
-// untracked state updates (which do not trigger re-render)
-// inputs, outputs
+});

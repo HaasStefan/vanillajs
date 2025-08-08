@@ -23,7 +23,10 @@ export function createRxState<T extends object>(initialState: T): RxState<T> {
   };
 }
 
-function createProxy<T extends object>(target: T, notifyCallbacks: (changedProperty: keyof T, value: T[keyof T]) => void): T {
+function createProxy<T extends object>(
+  target: T, 
+  notifyCallbacks: (changedProperty: keyof T, value: T[keyof T]) => void
+): T {
   return new Proxy(target, {
     set(obj, prop, value) {
       // Check if the value actually changed
