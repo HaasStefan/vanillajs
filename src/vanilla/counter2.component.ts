@@ -32,16 +32,6 @@ class CounterElement extends BaseHTMLElement {
 
   countElement!: HTMLElement;
 
-  constructor() {
-    super();
-
-    this.count$.subscribe((count) => {
-      if (!this.countElement) return;
-
-      this.countElement.textContent = `Counter: ${count}`;
-    });
-  }
-
   onMount() {
     this.shadowRoot!.innerHTML = /* html */ `
       <div>
@@ -50,6 +40,12 @@ class CounterElement extends BaseHTMLElement {
         <button id="decrement">Decrement</button>
       </div>
     `;
+
+    this.count$.subscribe((count) => {
+      if (!this.countElement) return;
+
+      this.countElement.textContent = `Counter: ${count}`;
+    });
 
     this.countElement = this.querySelector("#count")!;
 
