@@ -1,4 +1,5 @@
 import './style.css';
-// import './counter/counter.component.ts';
 
-import './vanilla/counter.component.ts';
+import './app/counter2.component.ts';
+
+import '@vanilla/setup';

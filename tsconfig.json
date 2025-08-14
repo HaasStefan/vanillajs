@@ -21,6 +21,12 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
 
+    "baseUrl": ".",
+    "paths": {
+      "@vanilla/components": ["src/vanilla/components/index.ts"],
+      "@vanilla/store": ["src/vanilla/store/index.ts"],
+      "@vanilla/setup": ["src/vanilla/setup.ts"]
+    }
   },
-  "include": ["src", "./observables.d.ts"],
+  "include": ["src"]
 }
